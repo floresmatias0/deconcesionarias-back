@@ -21,5 +21,22 @@ module.exports = {
                 }
             }]
         })
-    }
+    },
+    updateCategoryService: async (categoryId, name, icon) => {
+        return await Category.update({
+            name,
+            icon
+        },{
+            where:{
+                id: categoryId
+            }
+        })
+        .then(async() => await Category.findByPk(categoryId))
+    },
+    deleteCategoryService: async (categoryId) => {
+        return await Category.destroy({
+            where:{
+                id: categoryId
+            }})
+    },
 }

@@ -18,5 +18,22 @@ module.exports = {
                 model: Category
             }]
         })
-    }
+    },
+    updatePropertyService: async (propertyId, name, categoryId) => {
+            return await Property.update({
+                name,
+                categoryId
+            },{
+                where:{
+                    id: propertyId
+                }
+            })
+            .then(async() => await Property.findByPk(propertyId))
+    },
+    deletePropertyService: async (propertyId) => {
+        return await Property.destroy({
+            where:{
+                id: propertyId
+            }})
+    },
 }

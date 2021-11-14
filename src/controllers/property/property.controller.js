@@ -1,4 +1,8 @@
-const { createPropertyService } = require('../../services/property/property.services');
+const { 
+    createPropertyService,
+    updatePropertyService,
+    deletePropertyService
+} = require('../../services/property/property.services');
 const { body } = require('express-validator');
 
 module.exports = {
@@ -8,5 +12,11 @@ module.exports = {
     ],
     createPropertyController: (name,categoryId) => {
         return createPropertyService(name,categoryId)
+    },
+    updatePropertyController: (propertyId, name,categoryId) => {
+        return updatePropertyService(propertyId, name,categoryId)
+    },
+    deletePropertyController: (propertyId) => {
+        return deletePropertyService(propertyId)
     }
 }

@@ -1,4 +1,8 @@
-const { createCategoryService } = require('../../services/category/category.services');
+const { 
+    createCategoryService,
+    updateCategoryService,
+    deleteCategoryService 
+} = require('../../services/category/category.services');
 const { body } = require('express-validator');
 
 module.exports = {
@@ -8,5 +12,11 @@ module.exports = {
     ],
     createCategoryController: (name,icon) => {
         return createCategoryService(name,icon)
+    },
+    updateCategoryController: (categoryId,name,icon) => {
+        return updateCategoryService(categoryId,name,icon)
+    },
+    deleteCategoryController: (categoryId) => {
+        return deleteCategoryService(categoryId)
     }
 }
