@@ -5,7 +5,7 @@ const {
   properties
 } = require('./src/helpers');
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   Category.bulkCreate(categories)
   Property.bulkCreate(properties)
   server.listen(process.env.PORT || 3001, () => {
